@@ -1,0 +1,429 @@
+/* App.css */
+:root {
+    --primary-color: #3861fb;
+    --secondary-color: #6c86cc;
+    --success-color: #16c784;
+    --danger-color: #ea3943;
+    --text-primary: #000000;
+    --text-secondary: #616e85;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafd;
+    --border-color: #e1e5ea;
+    --card-bg: #ffffff;
+    --header-bg: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  .dark-mode {
+    --text-primary: #ffffff;
+    --text-secondary: #b4b4b4;
+    --bg-primary: #121212;
+    --bg-secondary: #1e1e1e;
+    --border-color: #2d2d2d;
+    --card-bg: #1e1e1e;
+    --header-bg: #1e1e1e;
+    --shadow-color: rgba(0, 0, 0, 0.4);
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background-color: var(--header-bg);
+    box-shadow: 0 2px 10px var(--shadow-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .logo h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+  }
+  
+  .navigation ul {
+    display: flex;
+    list-style: none;
+  }
+  
+  .navigation li {
+    margin: 0 1rem;
+  }
+  
+  .navigation a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  
+  .navigation a:hover,
+  .navigation li.active a {
+    color: var(--primary-color);
+  }
+  
+  .header-actions {
+    display: flex;
+    align-items: center;
+  }
+  
+  .theme-toggle,
+  .auth-button {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .theme-toggle {
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    margin-right: 1rem;
+  }
+  
+  .theme-toggle:hover {
+    background-color: var(--bg-secondary);
+  }
+  
+  .auth-button {
+    background-color: var(--primary-color);
+    border: none;
+    color: white;
+  }
+  
+  .auth-button:hover {
+    background-color: var(--secondary-color);
+  }
+  
+  .mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+  }
+  
+  .mobile-menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-primary);
+    margin: 2px 0;
+    border-radius: 3px;
+  }
+  
+  .dashboard-container {
+    display: grid;
+    grid-template-columns: 300px 1fr 350px;
+    grid-gap: 1.5rem;
+    padding: 1.5rem;
+    flex: 1;
+  }
+  
+  .sidebar,
+  .main-content,
+  .portfolio-container {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    overflow: hidden;
+  }
+  
+  .crypto-list {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .crypto-list h2 {
+    padding: 1.5rem;
+    font-size: 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .list-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    padding: 0.75rem 1.5rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .crypto-list ul {
+    list-style: none;
+    overflow-y: auto;
+    flex: 1;
+  }
+  
+  .crypto-list li {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .crypto-list li:hover,
+  .crypto-list li.selected {
+    background-color: var(--bg-secondary);
+  }
+  
+  .coin-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .coin-info img {
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+  }
+  
+  .coin-name small {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    font-weight: normal;
+  }
+  
+  .coin-price {
+    font-weight: 500;
+  }
+  
+  .coin-change {
+    font-weight: 500;
+  }
+  
+  .positive {
+    color: var(--success-color);
+  }
+  
+  .negative {
+    color: var(--danger-color);
+  }
+  
+  .crypto-detail {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .crypto-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .crypto-image img {
+    width: 48px;
+    height: 48px;
+    margin-right: 1rem;
+  }
+  
+  .crypto-title h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  .crypto-title h2 span {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    font-weight: normal;
+  }
+  
+  .crypto-rank {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+  }
+  
+  .crypto-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .stat {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .stat-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.25rem;
+  }
+  
+  .stat-value {
+    font-size: 1.125rem;
+    font-weight: 500;
+  }
+  
+  .add-to-portfolio h3 {
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+  }
+  
+  .value-preview {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+  }
+  
+  .add-button {
+    padding: 0.75rem 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .add-button:hover {
+    background-color: var(--secondary-color);
+  }
+  
+  .chart-container {
+    padding: 1.5rem;
+  }
+  
+  .chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .chart-header h2 {
+    font-size: 1.25rem;
+  }
+  
+  .time-filters {
+    display: flex;
+  }
+  
+  .time-filters button {
+    padding: 0.5rem 0.75rem;
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    margin-left: 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .time-filters button:hover,
+  .time-filters button.active {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+  }
+  
+  .portfolio {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .portfolio h2 {
+    padding: 1.5rem;
+    font-size: 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .empty-portfolio {
+    padding: 2rem;
+    text-align: center;
+    color: var(--text-secondary);
+  }
+  
+  .portfolio-summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .summary-item {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .summary-item span {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.25rem;
+  }
+  
+  .summary-item .value {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  
+  .portfolio-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .portfolio-list .list-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 0.5fr;
+    padding: 0.75rem 1rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+  }
+  
+  .portfolio-list ul {
+    list-style: none;
+    overflow-y: auto;
+    flex: 1;
+  }
